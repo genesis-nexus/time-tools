@@ -1,12 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XBD8D635DP"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-XBD8D635DP');
+    </script>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
-    <title>TimeTools - Comprehensive Time Utilities</title>
+    
+    <!-- Primary Meta Tags -->
+    <title>TimeTools - Free Online Timer, Stopwatch, World Clock & Time Converter</title>
+    <meta name="title" content="TimeTools - Free Online Timer, Stopwatch, World Clock & Time Converter">
+    <meta name="description" content="Professional time management tools: timer, stopwatch, epoch converter, world clock, and holiday calendar. Free online time utilities for productivity, scheduling, and time tracking. No registration required.">
+    <meta name="keywords" content="timer, stopwatch, world clock, time converter, epoch converter, unix timestamp, timezone, holiday calendar, time management, productivity tools, online timer, free timer, time tracking, scheduling">
+    <meta name="author" content="TimeTools">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="language" content="English">
+    <meta name="revisit-after" content="7 days">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://time.devhub.sbs/">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://time.devhub.sbs/">
+    <meta property="og:title" content="TimeTools - Free Online Timer, Stopwatch, World Clock & Time Converter">
+    <meta property="og:description" content="Professional time management tools: timer, stopwatch, epoch converter, world clock, and holiday calendar. Free online time utilities for productivity and scheduling.">
+    <meta property="og:image" content="https://time.devhub.sbs/assets/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="TimeTools">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://time.devhub.sbs/">
+    <meta property="twitter:title" content="TimeTools - Free Online Timer, Stopwatch, World Clock & Time Converter">
+    <meta property="twitter:description" content="Professional time management tools: timer, stopwatch, epoch converter, world clock, and holiday calendar. Free online time utilities for productivity and scheduling.">
+    <meta property="twitter:image" content="https://time.devhub.sbs/assets/og-image.png">
+    
+    <!-- Additional SEO Meta Tags -->
+    <meta name="theme-color" content="#6366f1">
+    <meta name="msapplication-TileColor" content="#6366f1">
+    <meta name="application-name" content="TimeTools">
+    <meta name="apple-mobile-web-app-title" content="TimeTools">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <link rel="stylesheet" href="./styles.css">
     <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
     <link rel="shortcut icon" href="./assets/favicon.svg" type="image/svg+xml">
@@ -44,10 +92,10 @@
 </head>
 <body>
     <header>
-        <nav>
+        <nav role="navigation" aria-label="Main navigation">
             <div class="nav-brand">
-                <img src="assets/favicon.svg" alt="Logo" class="logo">
-                <h1>TimeTools</h1>
+                <img src="assets/favicon.svg" alt="TimeTools Logo" class="logo">
+                <h1>TimeTools - Professional Time Management Tools</h1>
             </div>
             <ul class="nav-links">
                 <li><a href="#timer" class="nav-link">Timer</a></li>
@@ -62,11 +110,22 @@
         </nav>
     </header>
 
-    <main>
+    <main role="main">
+        <!-- Hidden description for screen readers -->
+        <div class="sr-only">
+            <h1>TimeTools - Professional Time Management Tools</h1>
+            <p>Comprehensive time utilities including timer, stopwatch, epoch converter, world clock, and holiday calendar. Free online tools for productivity and time tracking.</p>
+        </div>
+        
         <!-- Timer Section -->
         <section id="timer" class="tool-section">
             <div class="container">
-                <h2>Timer</h2>
+                <div class="section-header">
+                    <h2>Timer - Set Custom and Preset Countdown Timers</h2>
+                    <button class="fullscreen-btn" data-target="timer" title="Toggle Fullscreen" aria-label="Enter fullscreen mode for timer">
+                        <span class="fullscreen-icon">⛶</span>
+                    </button>
+                </div>
                 <div class="tool-card">
                     <div class="timer-display" id="timerDisplay">00:00:00</div>
                     <div class="timer-controls">
@@ -95,7 +154,12 @@
         <!-- Stopwatch Section -->
         <section id="stopwatch" class="tool-section">
             <div class="container">
-                <h2>Stopwatch</h2>
+                <div class="section-header">
+                    <h2>Stopwatch - Track Time with Lap Functionality</h2>
+                    <button class="fullscreen-btn" data-target="stopwatch" title="Toggle Fullscreen" aria-label="Enter fullscreen mode for stopwatch">
+                        <span class="fullscreen-icon">⛶</span>
+                    </button>
+                </div>
                 <div class="tool-card">
                     <div class="stopwatch-display" id="stopwatchDisplay">00:00:00.00</div>
                     <div class="stopwatch-controls">
@@ -111,7 +175,7 @@
         <!-- Epoch Converter Section -->
         <section id="epoch" class="tool-section">
             <div class="container">
-                <h2>Epoch & Unix Time Converter</h2>
+                <h2>Epoch & Unix Time Converter - Convert Timestamps Instantly</h2>
                 <div class="tool-card">
                     <div class="converter-grid">
                         <div class="converter-input">
@@ -134,14 +198,19 @@
         <!-- Timezone Section -->
         <section id="timezone" class="tool-section">
             <div class="container">
-                <h2>World Clock</h2>
+                <div class="section-header">
+                    <h2>World Clock - View Time Across Multiple Timezones</h2>
+                    <button class="fullscreen-btn" data-target="timezone" title="Toggle Fullscreen" aria-label="Enter fullscreen mode for world clock">
+                        <span class="fullscreen-icon">⛶</span>
+                    </button>
+                </div>
                 <div class="tool-card">
                     <div class="timezone-grid" id="timezoneGrid">
                         <!-- Timezone cards will be dynamically generated -->
                     </div>
                     <div class="add-timezone">
                         <label for="timezoneSelect" style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--text-secondary);">Add a timezone:</label>
-                        <select id="timezoneSelect">
+                        <select id="timezoneSelect" aria-label="Select timezone to add to world clock">
                             <option value="">Select a timezone to add</option>
                         </select>
                     </div>
@@ -152,11 +221,11 @@
         <!-- Holidays Section -->
         <section id="holidays" class="tool-section">
             <div class="container">
-                <h2>Holiday Calendar</h2>
+                <h2>Holiday Calendar - View Holidays by Country</h2>
                 <div class="tool-card">
                     <div class="holiday-controls">
                         <label for="countrySelect" style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--text-secondary);">Select a country:</label>
-                        <select id="countrySelect">
+                        <select id="countrySelect" aria-label="Select country to view holidays">
                             <option value="US">United States</option>
                             <option value="GB">United Kingdom</option>
                             <option value="CA">Canada</option>
@@ -220,5 +289,46 @@
     </footer>
 
     <script src="./script.js"></script>
+    
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "TimeTools",
+        "description": "Professional time management tools including timer, stopwatch, epoch converter, world clock, and holiday calendar. Free online time utilities for productivity and scheduling.",
+        "url": "https://time.devhub.sbs/",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Web Browser",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "creator": {
+            "@type": "Organization",
+            "name": "TimeTools"
+        },
+        "featureList": [
+            "Timer with preset and custom times",
+            "Stopwatch with lap functionality", 
+            "Epoch & Unix Time Converter",
+            "World Clock with multiple timezones",
+            "Holiday Calendar by country",
+            "Light and Dark mode themes",
+            "Fullscreen mode",
+            "Mobile responsive design"
+        ],
+        "screenshot": "https://time.devhub.sbs/assets/og-image.png",
+        "softwareVersion": "1.0.8",
+        "datePublished": "2024-01-01",
+        "dateModified": "2024-12-03",
+        "inLanguage": "en-US",
+        "isAccessibleForFree": true,
+        "browserRequirements": "Requires JavaScript. Requires HTML5.",
+        "memoryRequirements": "Minimal",
+        "storageRequirements": "Minimal"
+    }
+    </script>
 </body>
 </html>

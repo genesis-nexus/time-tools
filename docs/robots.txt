@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://time.devhub.sbs/sitemap.xml
+
+# Crawl-delay
+Crawl-delay: 1
+
+# Allow all search engines to index all content
+Disallow:
+
+# Block access to service worker and manifest files (optional)
+# Disallow: /sw.js
+# Disallow: /manifest.json

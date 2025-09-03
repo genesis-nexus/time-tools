@@ -1,12 +1,15 @@
 // Service Worker for TimeTools
-const CACHE_NAME = 'timetools-v1.0.6';
+const CACHE_NAME = 'timetools-v1.0.9';
 const urlsToCache = [
   '/',
   '/index.html',
   '/styles.css',
   '/script.js',
   '/manifest.json',
-  '/assets/favicon.svg'
+  '/assets/favicon.svg',
+  '/assets/og-image.svg',
+  '/robots.txt',
+  '/sitemap.xml'
 ];
 
 // Install event - cache resources

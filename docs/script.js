@@ -16,6 +16,7 @@ class TimeTools {
         this.setupHolidays();
         this.updateCurrentEpoch();
         this.setupNavigation();
+        this.setupFullscreen();
     }
 
     // Theme Toggle
@@ -759,6 +760,83 @@ class TimeTools {
                 }
             });
         });
+    }
+
+    // Fullscreen Functionality
+    setupFullscreen() {
+        const fullscreenButtons = document.querySelectorAll('.fullscreen-btn');
+        
+        fullscreenButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const targetId = button.getAttribute('data-target');
+                const targetSection = document.getElementById(targetId);
+                
+                if (targetSection) {
+                    this.toggleFullscreen(targetSection, button);
+                }
+            });
+        });
+
+        // Handle ESC key to exit fullscreen
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                this.exitFullscreen();
+            }
+        });
+    }
+
+    toggleFullscreen(section, button) {
+        const isFullscreen = section.classList.contains('fullscreen');
+        
+        if (isFullscreen) {
+            this.exitFullscreen();
+        } else {
+            this.enterFullscreen(section, button);
+        }
+    }
+
+    enterFullscreen(section, button) {
+        // Add fullscreen class to section
+        section.classList.add('fullscreen');
+        
+        // Add fullscreen-active class to body
+        document.body.classList.add('fullscreen-active');
+        
+        // Update button icon to exit fullscreen
+        const icon = button.querySelector('.fullscreen-icon');
+        icon.textContent = '✕';
+        button.title = 'Exit Fullscreen';
+        
+        // Store reference to current fullscreen section
+        this.currentFullscreenSection = section;
+        this.currentFullscreenButton = button;
+        
+        // Prevent body scroll
+        document.body.style.overflow = 'hidden';
+    }
+
+    exitFullscreen() {
+        if (this.currentFullscreenSection) {
+            // Remove fullscreen class
+            this.currentFullscreenSection.classList.remove('fullscreen');
+            
+            // Remove fullscreen-active class from body
+            document.body.classList.remove('fullscreen-active');
+            
+            // Restore button icon
+            if (this.currentFullscreenButton) {
+                const icon = this.currentFullscreenButton.querySelector('.fullscreen-icon');
+                icon.textContent = '⛶';
+                this.currentFullscreenButton.title = 'Toggle Fullscreen';
+            }
+            
+            // Restore body scroll
+            document.body.style.overflow = '';
+            
+            // Clear references
+            this.currentFullscreenSection = null;
+            this.currentFullscreenButton = null;
+        }
     }
 }
 

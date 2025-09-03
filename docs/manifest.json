@@ -1,11 +1,11 @@
 {
-  "name": "TimeTools - Time Utilities",
+  "name": "TimeTools - Professional Time Management Tools",
   "short_name": "TimeTools",
-  "description": "Comprehensive time-related utilities including timer, stopwatch, epoch converter, timezone converter, and holiday calendar",
+  "description": "Free online time management tools including timer, stopwatch, epoch converter, world clock, and holiday calendar. Professional time utilities for productivity and scheduling.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#3b82f6",
+  "theme_color": "#6366f1",
   "orientation": "portrait-primary",
   "icons": [
     {
@@ -22,16 +22,10 @@
   "prefer_related_applications": false,
   "screenshots": [
     {
-      "src": "assets/screenshot1.png",
-      "sizes": "1280x720",
-      "type": "image/png",
+      "src": "assets/og-image.svg",
+      "sizes": "1200x630",
+      "type": "image/svg+xml",
       "form_factor": "wide"
-    },
-    {
-      "src": "assets/screenshot2.png",
-      "sizes": "750x1334",
-      "type": "image/png",
-      "form_factor": "narrow"
     }
   ]
 }

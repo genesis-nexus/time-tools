@@ -1,3 +1,16 @@
+/* Screen Reader Only Content */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 /* CSS Variables for theming */
 :root {
   /* Anima-inspired light theme */
@@ -256,18 +269,198 @@ main {
   margin-bottom: 5rem;
 }
 
+/* Section Header */
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
 .tool-section h2 {
   font-size: 2.25rem;
   font-weight: 700;
-  margin-bottom: 2rem;
   color: var(--text-primary);
   letter-spacing: -0.025em;
-  text-align: center;
+  margin: 0;
 }
 
 /* Ensure section titles are visible in dark theme */
 [data-theme="dark"] .tool-section h2 {
   color: var(--text-primary);
+}
+
+/* Fullscreen Button */
+.fullscreen-btn {
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+}
+
+.fullscreen-btn:hover {
+  background: var(--bg-card);
+  border-color: var(--accent-primary);
+  color: var(--accent-primary);
+  transform: scale(1.05);
+}
+
+.fullscreen-icon {
+  font-size: 1.2rem;
+  transition: transform 0.2s ease;
+}
+
+.fullscreen-btn:hover .fullscreen-icon {
+  transform: scale(1.1);
+}
+
+/* Fullscreen Mode Styles */
+.tool-section.fullscreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: var(--bg-secondary);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+.tool-section.fullscreen .container {
+  width: 100%;
+  max-width: 1200px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+.tool-section.fullscreen .tool-card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  max-height: 100%;
+  overflow-y: auto;
+  min-height: 0;
+}
+
+/* Fullscreen Timer/Stopwatch Display */
+.tool-section.fullscreen .timer-display,
+.tool-section.fullscreen .stopwatch-display {
+  font-size: 6rem;
+  margin-bottom: 2rem;
+  padding: 1rem;
+  word-break: break-all;
+  overflow-wrap: break-word;
+  line-height: 1.1;
+}
+
+/* Fullscreen Timezone Grid */
+.tool-section.fullscreen .timezone-grid {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-height: calc(100vh - 200px);
+  overflow-y: auto;
+  padding: 1rem;
+  margin: 1rem 0;
+}
+
+.tool-section.fullscreen .timezone-card {
+  padding: 2rem;
+}
+
+.tool-section.fullscreen .timezone-card .time {
+  font-size: 2.5rem;
+}
+
+.tool-section.fullscreen .timezone-card h3 {
+  font-size: 1.3rem;
+}
+
+/* Fullscreen Timezone Section Specific */
+.tool-section.fullscreen#timezone .tool-card {
+  overflow-y: auto;
+  padding: 0;
+}
+
+.tool-section.fullscreen#timezone .add-timezone {
+  position: sticky;
+  top: 0;
+  background: var(--bg-card);
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: var(--radius-lg);
+  z-index: 10;
+}
+
+/* Fullscreen Controls */
+.tool-section.fullscreen .timer-controls,
+.tool-section.fullscreen .stopwatch-controls {
+  margin-top: auto;
+}
+
+.tool-section.fullscreen .preset-buttons {
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.tool-section.fullscreen .preset-btn {
+  padding: 1rem;
+  font-size: 1.1rem;
+}
+
+.tool-section.fullscreen .btn {
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+}
+
+/* Exit Fullscreen Button */
+.tool-section.fullscreen .fullscreen-btn {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  background: var(--bg-card);
+  border: 2px solid var(--border-color);
+  z-index: 10000;
+}
+
+.tool-section.fullscreen .fullscreen-btn:hover {
+  background: var(--accent-danger);
+  border-color: var(--accent-danger);
+  color: white;
+}
+
+.tool-section.fullscreen .fullscreen-icon {
+  font-size: 1.5rem;
+}
+
+/* Hide other sections when in fullscreen */
+body.fullscreen-active {
+  overflow: hidden;
+}
+
+body.fullscreen-active .tool-section:not(.fullscreen) {
+  display: none;
+}
+
+body.fullscreen-active header,
+body.fullscreen-active footer {
+  display: none;
 }
 
 .container {
@@ -818,6 +1011,47 @@ footer {
   .add-timezone select,
   .holiday-controls select {
     min-width: auto;
+  }
+
+  /* Fullscreen responsive */
+  .tool-section.fullscreen {
+    padding: 1rem;
+  }
+
+  .tool-section.fullscreen .container {
+    padding: 1rem;
+  }
+
+  .tool-section.fullscreen .timer-display,
+  .tool-section.fullscreen .stopwatch-display {
+    font-size: 3.5rem;
+    padding: 0.5rem;
+  }
+
+  .tool-section.fullscreen .timezone-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    max-height: calc(100vh - 150px);
+    padding: 0.5rem;
+  }
+
+  .tool-section.fullscreen .timezone-card .time {
+    font-size: 1.8rem;
+  }
+
+  .tool-section.fullscreen .preset-buttons {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .tool-section.fullscreen .fullscreen-btn {
+    top: 1rem;
+    right: 1rem;
+    padding: 0.5rem;
+  }
+
+  .tool-section.fullscreen#timezone .add-timezone {
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
   }
 }
 
