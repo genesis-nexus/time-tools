@@ -1,0 +1,39 @@
+
+{
+  "name": "timetools",
+  "version": "1.0.0",
+  "description": "A comprehensive collection of time-related utilities including timer, stopwatch, epoch converter, timezone converter, and holiday calendar",
+  "main": "index.html",
+  "scripts": {
+    "start": "python -m http.server 8000",
+    "dev": "python -m http.server 8000",
+    "build": "echo 'No build process needed for static site'",
+    "deploy": "echo 'Deploy to your preferred static hosting service'"
+  },
+  "keywords": [
+    "timer",
+    "stopwatch",
+    "epoch",
+    "unix-time",
+    "timezone",
+    "holidays",
+    "time-tools",
+    "utilities",
+    "web-app"
+  ],
+  "author": "TimeTools",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/timetools.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/timetools/issues"
+  },
+  "homepage": "https://yourusername.github.io/timetools",
+  "devDependencies": {},
+  "dependencies": {},
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

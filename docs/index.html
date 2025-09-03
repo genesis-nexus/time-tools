@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>TimeTools - Comprehensive Time Utilities</title>
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+    <link rel="shortcut icon" href="./assets/favicon.svg" type="image/svg+xml">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Fallback styles to ensure basic styling works */
+        body { 
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+            color: #1e293b;
+        }
+        .nav-brand h1 { 
+            color: #3b82f6; 
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        .tool-card {
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        .timer-display, .stopwatch-display {
+            font-size: 4rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #3b82f6;
+            font-family: 'Courier New', monospace;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-brand">
+                <img src="assets/favicon.svg" alt="Logo" class="logo">
+                <h1>TimeTools</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#timer" class="nav-link">Timer</a></li>
+                <li><a href="#stopwatch" class="nav-link">Stopwatch</a></li>
+                <li><a href="#epoch" class="nav-link">Epoch Converter</a></li>
+                <li><a href="#timezone" class="nav-link">Timezone</a></li>
+                <li><a href="#holidays" class="nav-link">Holidays</a></li>
+            </ul>
+            <button class="theme-toggle" id="themeToggle">
+                <span class="theme-icon">🌙</span>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Timer Section -->
+        <section id="timer" class="tool-section">
+            <div class="container">
+                <h2>Timer</h2>
+                <div class="tool-card">
+                    <div class="timer-display" id="timerDisplay">00:00:00</div>
+                    <div class="timer-controls">
+                        <div class="preset-buttons">
+                            <button class="preset-btn" data-minutes="1">1 min</button>
+                            <button class="preset-btn" data-minutes="5">5 min</button>
+                            <button class="preset-btn" data-minutes="10">10 min</button>
+                            <button class="preset-btn" data-minutes="15">15 min</button>
+                            <button class="preset-btn" data-minutes="30">30 min</button>
+                            <button class="preset-btn" data-minutes="60">1 hour</button>
+                        </div>
+                        <div class="custom-timer">
+                            <input type="number" id="customMinutes" placeholder="Minutes" min="0" max="59">
+                            <input type="number" id="customSeconds" placeholder="Seconds" min="0" max="59">
+                        </div>
+                        <div class="timer-buttons">
+                            <button id="startTimer" class="btn btn-primary">Start</button>
+                            <button id="pauseTimer" class="btn btn-secondary">Pause</button>
+                            <button id="resetTimer" class="btn btn-danger">Reset</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stopwatch Section -->
+        <section id="stopwatch" class="tool-section">
+            <div class="container">
+                <h2>Stopwatch</h2>
+                <div class="tool-card">
+                    <div class="stopwatch-display" id="stopwatchDisplay">00:00:00.00</div>
+                    <div class="stopwatch-controls">
+                        <button id="startStopwatch" class="btn btn-primary">Start</button>
+                        <button id="lapStopwatch" class="btn btn-secondary">Lap</button>
+                        <button id="resetStopwatch" class="btn btn-danger">Reset</button>
+                    </div>
+                    <div class="lap-times" id="lapTimes"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Epoch Converter Section -->
+        <section id="epoch" class="tool-section">
+            <div class="container">
+                <h2>Epoch & Unix Time Converter</h2>
+                <div class="tool-card">
+                    <div class="converter-grid">
+                        <div class="converter-input">
+                            <label for="epochInput">Unix Timestamp</label>
+                            <input type="number" id="epochInput" placeholder="Enter timestamp">
+                            <button id="convertEpoch" class="btn btn-primary">Convert</button>
+                        </div>
+                        <div class="converter-output">
+                            <label>Human Readable Date</label>
+                            <div class="output-display" id="epochOutput">-</div>
+                        </div>
+                    </div>
+                    <div class="current-time">
+                        <p>Current Unix Time: <span id="currentEpoch"></span></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Timezone Section -->
+        <section id="timezone" class="tool-section">
+            <div class="container">
+                <h2>World Clock</h2>
+                <div class="tool-card">
+                    <div class="timezone-grid" id="timezoneGrid">
+                        <!-- Timezone cards will be dynamically generated -->
+                    </div>
+                    <div class="add-timezone">
+                        <label for="timezoneSelect" style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--text-secondary);">Add a timezone:</label>
+                        <select id="timezoneSelect">
+                            <option value="">Select a timezone to add</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Holidays Section -->
+        <section id="holidays" class="tool-section">
+            <div class="container">
+                <h2>Holiday Calendar</h2>
+                <div class="tool-card">
+                    <div class="holiday-controls">
+                        <label for="countrySelect" style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--text-secondary);">Select a country:</label>
+                        <select id="countrySelect">
+                            <option value="US">United States</option>
+                            <option value="GB">United Kingdom</option>
+                            <option value="CA">Canada</option>
+                            <option value="AU">Australia</option>
+                            <option value="DE">Germany</option>
+                            <option value="FR">France</option>
+                            <option value="JP">Japan</option>
+                            <option value="IN">India</option>
+                            <option value="BR">Brazil</option>
+                            <option value="MX">Mexico</option>
+                            <option value="IT">Italy</option>
+                            <option value="ES">Spain</option>
+                            <option value="NL">Netherlands</option>
+                            <option value="SE">Sweden</option>
+                            <option value="NO">Norway</option>
+                            <option value="DK">Denmark</option>
+                            <option value="FI">Finland</option>
+                            <option value="CH">Switzerland</option>
+                            <option value="AT">Austria</option>
+                            <option value="BE">Belgium</option>
+                            <option value="PL">Poland</option>
+                            <option value="CZ">Czech Republic</option>
+                            <option value="HU">Hungary</option>
+                            <option value="RO">Romania</option>
+                            <option value="BG">Bulgaria</option>
+                            <option value="GR">Greece</option>
+                            <option value="PT">Portugal</option>
+                            <option value="IE">Ireland</option>
+                            <option value="NZ">New Zealand</option>
+                            <option value="ZA">South Africa</option>
+                            <option value="EG">Egypt</option>
+                            <option value="MA">Morocco</option>
+                            <option value="TR">Turkey</option>
+                            <option value="RU">Russia</option>
+                            <option value="CN">China</option>
+                            <option value="KR">South Korea</option>
+                            <option value="TH">Thailand</option>
+                            <option value="SG">Singapore</option>
+                            <option value="MY">Malaysia</option>
+                            <option value="ID">Indonesia</option>
+                            <option value="PH">Philippines</option>
+                            <option value="VN">Vietnam</option>
+                            <option value="AR">Argentina</option>
+                            <option value="CL">Chile</option>
+                            <option value="CO">Colombia</option>
+                            <option value="PE">Peru</option>
+                            <option value="VE">Venezuela</option>
+                        </select>
+
+                    </div>
+                    <div class="holidays-list" id="holidaysList">
+                        <p>Select a country to view holidays for the current year.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 TimeTools. All rights reserved.</p>
+    </footer>
+
+    <script src="./script.js"></script>
+</body>
+</html>
